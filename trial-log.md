@@ -116,3 +116,31 @@ factory fire, invented FBI breach) are deliberately absent.
   trial-log). Check v2: again **13 passed, 1 failed** (only thinking_priced,
   0 usage rows — same subagent flush reason); reproduces 99.0% (330/333).
 - Bundle v3: (filled after re-bundle with this updated trial-log commit)
+
+## Refresh 25 Nov ~15:30 WITA (koordinator, sebelum submit — ACC Septian 15:22 "gas aja")
+
+- Cek berita besar sejak verifikasi builder ~10:00 WITA (Reuters summary,
+  aggregator 25 Nov 06:00–07:30 UTC). Sebagian besar "baru" ternyata sudah
+  ada di grid (Cartagena, O'Hare, Senegal, turkeys, Giuliani, Fort Hood).
+- DITOLAK sesudah verifikasi tanggal (jebakan tanggal agregator!):
+  IBM quantum 15 menit = pengumuman 30 Jul 2026 (IBM newsroom), BUKAN
+  berita 24/25 Nov — timestamp agregator adalah waktu crawl, bukan tanggal
+  cerita. NASA Mars fleet (Perseverance + Odyssey pause) = update NASA
+  19 Nov, BUKAN 24/25 Nov. Keduanya TIDAK masuk — satu item salah tanggal
+  bisa merugikan di mata judge.
+- DITERIMA, 1 swap: grid #19 "US court clears army to detonate toxic
+  explosives in Iowa" (24 NOV, North America — item terlemah) → "King
+  tides set November record in San Francisco Bay." (25 NOV, North
+  America). Terverifikasi: KION/NWS, published 2026-11-25T06:20:26Z;
+  Crissy Field 8.23 ft, pecahkan rekor November 7.97 ft (1982); NY Post
+  + Reuters konfirmasi. Tanggal pelaporan = 25 NOV (per konvensi builder).
+- Lebar teks dicek dengan font.json asli (bukan perkiraan): prefix +
+  teks = 2 baris (396px + 386px, batas 452px). Kandidat pertama ("King
+  tides flood San Francisco Bay, set November water record.") wrap 3
+  baris → DITOLAK, jangan pakai.
+- Total tetap 33 cerita, 7 region (judul entry TIDAK berubah); tanggal
+  grid kini 24×25 NOV + 6×24 NOV.
+
+## v4 — render sesudah refresh (koordinator)
+- entry.png: 45,729 bytes, sha256 `b19b40e473dc02903f7824945c374cd5fb84182c84399ad13c1df1d02d0f77d5` (2 run identik, verified). 1024x1024 RGB, < 1 MiB.
+- Visual QA full-res: masthead + dateline lengkap; 3 lead lengkap (judul + sub 2 baris, dalam kotak); 30 grid item lengkap — item baru #19 "NORTH AMERICA 25 NOV - King tides set / November record in San Francisco Bay." 2 baris penuh, tidak terpotong; footer lengkap dan tidak terpotong di tepi.
