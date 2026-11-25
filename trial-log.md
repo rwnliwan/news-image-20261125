@@ -110,4 +110,9 @@ factory fire, invented FBI breach) are deliberately absent.
   At-submission notes are local-only: repo IS public, .makefun/owner.json IS
   committed, commit IS pushed (HEAD = ls-remote), repo created 02:02:17Z,
   after the 00:00Z opening.
-- Bundle v2: (filled after re-bundle with the updated trial-log commit)
+- Bundle v2: `tmp-news/bundle-news-v2.tar.gz`, 302,229 bytes, sha256
+  `24697c71be07b96957ff5f469a382bfeb4a09403e233250867b5d433b00fee07`
+  (commit 8e76e625df0abcf4fd3152ad4dff84dfc7a971c2, with the v1 results in the
+  trial-log). Check v2: again **13 passed, 1 failed** (only thinking_priced,
+  0 usage rows — same subagent flush reason); reproduces 99.0% (330/333).
+- Bundle v3: (filled after re-bundle with this updated trial-log commit)
