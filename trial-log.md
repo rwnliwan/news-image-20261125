@@ -115,7 +115,7 @@ factory fire, invented FBI breach) are deliberately absent.
   (commit 8e76e625df0abcf4fd3152ad4dff84dfc7a971c2, with the v1 results in the
   trial-log). Check v2: again **13 passed, 1 failed** (only thinking_priced,
   0 usage rows — same subagent flush reason); reproduces 99.0% (330/333).
-- Bundle v3: (filled after re-bundle with this updated trial-log commit)
+- Bundle v3: (detail lengkap di bagian akhir log ini)
 
 ## Refresh 25 Nov ~15:30 WITA (koordinator, sebelum submit — ACC Septian 15:22 "gas aja")
 
@@ -144,3 +144,23 @@ factory fire, invented FBI breach) are deliberately absent.
 ## v4 — render sesudah refresh (koordinator)
 - entry.png: 45,729 bytes, sha256 `b19b40e473dc02903f7824945c374cd5fb84182c84399ad13c1df1d02d0f77d5` (2 run identik, verified). 1024x1024 RGB, < 1 MiB.
 - Visual QA full-res: masthead + dateline lengkap; 3 lead lengkap (judul + sub 2 baris, dalam kotak); 30 grid item lengkap — item baru #19 "NORTH AMERICA 25 NOV - King tides set / November record in San Francisco Bay." 2 baris penuh, tidak terpotong; footer lengkap dan tidak terpotong di tepi.
+
+- Bundle v3: `tmp-news/bundle-news-v3.tar.gz`, 302,941 bytes, sha256
+  `395e19cc908a4a8e45e53293cd9275b56eda4817e312e11bf929908941e16846`
+  (commit f02d2dff, builder session). Check v3: 13/1 (hanya thinking_priced,
+  0 usage rows). JANGAN SUBMIT bundle v3.
+- Bundle v4 (koordinator, commit 28e03e6): `tmp-news/bundle-news-v4.tar.gz`,
+  307,655 bytes, sha256
+  `0fdea2c31aab71f1f0b3f4ca87b880f1cb34837409e8c3ae698b99a79f368866`.
+  Sesi builder asli `bb1b1e26-05ce-4979-81f0-98cfb90f9e75` + muse-usage-news.jsonl
+  (1 row builder dari muse.db) + prompt-file tulisan koordinator
+  (prompt-news-coord.txt, origin other). "1 usage row read, 1 attached".
+- Check v4: **14 passed, 0 failed, 5 skipped, 5 checked at submission**
+  (reproduces 92,2%, 335/363; thinking_priced PASS 1 usage record).
+- Submit 25 Nov 15:28 WITA: HTTP 202 bersih, 0 flag. ID
+  `01a2119b-3d28-7219-8f02-137595a62dc2`, server time 2026-11-25T07:28:36.120Z,
+  claim AF-Z0DDA-2CSRC-R3RQ5-2W10P. Server: stage checked, 26 pass / 0 fail /
+  3 skip, round 1, grading under way (tanpa blind round).
+- Drive: folder `11RyfPVeRMea2glLut6lVEsxKNVcrjo-4`, claim
+  `1c5xcmIgqfMgCWijqZrKowAzzZKCvA9LV`, bundle `1HA-o0jTa0UwixJ_gY2kzyOcR_ZHeCpxc`,
+  md5 + size 2/2 (claim re-upload sesudah tambah status, re-verifikasi cocok).
