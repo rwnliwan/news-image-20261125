@@ -1,0 +1,98 @@
+# Trial log — news-image-20261125
+
+- Slug: `news-image-20261125` — "Sum up 25 November's world news in one image"
+- Prize: $100 (top 50: $20 / $12 / $6 / $2 x7 / $1.20 x40). Deadline: 27 Nov 2026 08:00 WITA.
+- Kit: fresh from https://make.fun/c/news-image-20261125/kit ; kit.json bundle_sha256
+  `946c3b76529168f0b3961501c6e009b6acbde88c62ca2e70aa3b6bf4a4631ef4` — MATCHES the API value.
+  CLI: `kit/news-image-20261125-kit/cli/makefun.mjs` (no extra nesting).
+- Gate: PNG/JPEG <= 1 MiB, <= 1024x1024, program runs 2x, byte-identical output.
+  Judge: AI pairwise, 3 Swiss rounds + playoff top 52. No blind round.
+- Strategy (from placed-vs-unranked analysis 25 Nov): DENSE format — many small
+  dated stories across regions, NOT 6 big panels. ONLY real verified headlines,
+  no invented stories. Entry title advertises the exact story + region count.
+- Final entry title: "25 November 2026 — 33 dated stories, 7 regions: Shenzhou-24, Riyadh tower, Huawei guilty"
+  (3 leads + 30 grid items = 33 stories; regions: North America, South America,
+  Europe, Africa, Middle East, Asia, Oceania = 7.)
+
+## Research (25 Nov 2026, ~09:55–10:05 WITA, via public web search)
+
+Every headline below was verified against a named source the same morning.
+Items are dated by the day reported (24 or 25 Nov); the paper's date is 25 Nov.
+
+| # | Story | Source |
+|---|-------|--------|
+| 1 | Shenzhou-24 launches 25 Nov 00:18 UTC, first Pakistani in orbit | Reuters, Wikipedia, Nature |
+| 2 | Houthi drone hits Riyadh PIF tower, 11 wounded | Reuters, BusinessWorld |
+| 3 | Huawei guilty on 10 of 12 counts, Brooklyn jury | US DOJ, CNN, WSJ |
+| 4 | Zelenskiy confirms Ukraine hit Russian ship in Gulf of Finland | Reuters world summary 25 Nov |
+| 5 | Ukraine FM: Libya ship strike self-defence, cites UN Charter | Reuters 24 Nov |
+| 6 | Russian strike kills 2 in Odesa; drones hit Kyiv flats | Reuters 25 Nov |
+| 7 | IRGC claims three tankers hit mines in Hormuz | Al Jazeera / Reuters via live blogs |
+| 8 | Sarkozy and Bruni ordered to stand trial, Libya witness case | Reuters 24 Nov |
+| 9 | Real Madrid 5-1 PSV, Bellingham stunner, Mbappe brace | UEFA, Reuters |
+| 10 | Arsenal 1-1 Dortmund; Man City 2-2 Napoli | Reuters |
+| 11 | England beat Australia by 8 wickets, 2nd T20I, Donald 85 off 32 | Reuters, Cricinfo |
+| 12 | Sooryavanshi, 15, List A record 204 off 53 balls, India A | CricTracker |
+| 13 | Asia stocks slide 2.3%; Nvidia falls 5.9% | Reuters markets 25 Nov |
+| 14 | Australia Oct CPI hotter; trimmed mean 3.8% | Reuters 25 Nov |
+| 15 | Solomons to swap China defence treaty for Australia pact | press reports 25 Nov |
+| 16 | Fiji declares nationwide disaster, El Nino dry spell | press reports 25 Nov |
+| 17 | COP31 fallout: Pacific accuses Australia of climate betrayal | PINA / Univ. of Melbourne |
+| 18 | Trump pardons turkeys Freedom and Feathers | Reuters summary 25 Nov |
+| 19 | Trump awards Giuliani the Medal of Freedom | Reuters summary 25 Nov |
+| 20 | Fort Hood shooter Hasan seeks stay of execution | Reuters / court records |
+| 21 | Radar outage delays Chicago O'Hare flights | Reuters / FAA |
+| 22 | Abrego Garcia to leave US voluntarily | Reuters / US media |
+| 23 | US court clears army to detonate toxic explosives in Iowa | Reuters |
+| 24 | Houthis 60 km from Aden; forces say city will hold | Reuters 25 Nov |
+| 25 | Iran to ration electricity, gas shortage deepens | RFE/RL |
+| 26 | Israeli strike kills Hamas security chief Abu Nahel, Gaza City | Reuters 24 Nov |
+| 27 | Senegal regains 2025 AFCON title after CAS ruling | press reports 25 Nov |
+| 28 | Rebel group pulls back from DR Congo areas | press reports 25 Nov |
+| 29 | Nigerian emir suspended after assault allegation | press reports 25 Nov |
+| 30 | Gunmen hold dozens hostage in Cartagena supermarket | press reports 25 Nov |
+| 31 | Car bomb in Colombia injures at least 23 | press reports 25 Nov |
+| 32 | Xiamen Airlines orders 50 Boeing 737-8 jets | press reports 25 Nov |
+| 33 | BJP and Akali Dal announce alliance for 2027 Punjab polls | Jagran Josh |
+
+Dropped as NOT 25 Nov news: Indonesia VP resignation (that was 12 Nov — verified
+via Carnegie / FULCRUM). No invented stories: nothing in the image is fabricated;
+the three bad panels from earlier editions (invented cartel boss, invented candy
+factory fire, invented FBI breach) are deliberately absent.
+
+## Build approach
+
+- main.ts is pure Node 22 stdlib: a bitmap-font renderer + hand-rolled PNG
+  encoder (zlib deflate level 9, no time chunks). No network, no randomness.
+- font.json: glyph bitmaps extracted locally from DejaVuSans / DejaVuSans-Bold
+  (system fonts) with a small PIL script — data file, regenerated deterministically.
+- headlines.json: the 33 verified stories above (3 leads + 30 grid items).
+- Layout 1024x1024: navy masthead, 3 lead boxes, 2-column x 15-row story grid
+  with region colour chips, sources footer.
+
+## Versions
+
+- v1 — first render. entry.png 48,200 bytes, sha256
+  `0a56c12ee7d414213aa60d200aa7ebae2a0285a995428484e3c02e77bae6652d` (2 runs identical).
+  Visual QA: lead titles overflowed their boxes, subs collided with titles,
+  grid rows overlapped the lead area. Layout too tight.
+- v2 — lead boxes 176 -> 200 px, grid start 330 -> 354, row height 42 -> 40,
+  title line height 30 -> 28. entry.png 47,888 bytes, sha256
+  `748d5d6236471ec88c9f3a3a20fa4dd905e2a4b0e3be693fbb72e9e529b2d7b8` (2 runs identical).
+  Visual QA: leads clean, but several grid items wrapped to 3 lines and their
+  tails were clipped (e.g. "Finland.", "case.", "comeback win." missing).
+- v3 — shortened 14 grid texts to fit 2 lines at the real ~48 chars/line measure;
+  shortened lead subs to 2 lines; shortened footer (it overflowed the canvas
+  edges). entry.png 45,828 bytes, sha256
+  `ace437a5855dce3a59d91f781a14587d49ef39bf42c2bd548e27def7094addd3`
+  (2 runs identical, verified). Visual QA at full res: masthead, 3 leads,
+  all 30 grid items complete, footer centred and complete. Size 45,828 < 1 MiB.
+
+## Determinism
+
+- Run 1 and run 2 of `node main.ts` (MAKEFUN_OUTPUT_DIR set) produce identical
+  sha256 on every version (v1, v2, v3). PNG has no timestamps; deflate level 9 fixed.
+
+## Bundle / check
+
+- (filled after bundle + check run)
