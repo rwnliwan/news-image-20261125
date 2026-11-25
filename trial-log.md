@@ -95,4 +95,19 @@ factory fire, invented FBI breach) are deliberately absent.
 
 ## Bundle / check
 
-- (filled after bundle + check run)
+- Bundle v1: `tmp-news/bundle-news-v1.tar.gz`, 296,960 bytes, sha256
+  `09066ea805e5aa6e584e6dd6a7df550d6dc0b0db45fa86184dabb3d0af603143`.
+  Built with --no-discover --no-family, harness muse-app 1.3, model
+  muse-spark-1.3, provider meta, effort default, mcp none, prompt-file
+  prompt-news.txt ("Gas aja smua bro", origin other).
+- Check v1 (from inside repo, commit fbd820c4bf43b40bfa4e4446e66873d7923f6e64):
+  **13 passed, 1 failed, 5 skipped, 5 checked at submission.**
+  Only failure: thinking_priced (0 usage rows — subagent session rows flush
+  only when this run completes; the coordinator re-bundles with --muse-usage
+  after the run ends, per the kit's own fix text).
+  thinking_reproduces 99.0% (315/318 authored lines, 0 copied); entrypoint
+  main.ts 210 authored lines; thinking_revised pass (4 write messages).
+  At-submission notes are local-only: repo IS public, .makefun/owner.json IS
+  committed, commit IS pushed (HEAD = ls-remote), repo created 02:02:17Z,
+  after the 00:00Z opening.
+- Bundle v2: (filled after re-bundle with the updated trial-log commit)
